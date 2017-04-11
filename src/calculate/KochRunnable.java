@@ -35,7 +35,6 @@ public class KochRunnable implements Runnable, Observer {
              break;
      }
      manager.edges.addAll(edges);
-     manager.threadCount++;
      manager.threadFinished();
     }
 

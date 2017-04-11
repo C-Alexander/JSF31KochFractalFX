@@ -16,7 +16,6 @@ public class KochManager {
     public List<Edge> edges = Collections.synchronizedList(new ArrayList<Edge>());
     TimeStamp drawTimer = new TimeStamp();
     TimeStamp updateTimer = new TimeStamp();
-    public int threadCount = 0;
 
     public KochManager(JSF31KochFractalFX application) {
 
@@ -34,9 +33,7 @@ public class KochManager {
         edges.clear();
         updateTimer.init();
         updateTimer.setBegin();
-        new Thread(new KochRunnable(currentLevel, this, Edges.LeftEdge)).start();
-        new Thread(new KochRunnable(currentLevel, this, Edges.RightEdge)).start();
-        new Thread(new KochRunnable(currentLevel, this, Edges.BottomEdge)).start();
+        new Thread(new EdgeGenerator(currentLevel, this)).start();
 
     }
 
@@ -54,7 +51,6 @@ public class KochManager {
     }
 
     public void threadFinished() {
-        if (threadCount%3 == 0) {
                 updateTimer.setEnd();
             Platform.runLater(() -> application.setTextCalc(updateTimer.toString()));
             Platform.runLater(() -> application.setTextNrEdges(Integer.toString(edges.size())));
@@ -62,5 +58,4 @@ public class KochManager {
             application.requestDrawEdges();
         }
     }
-}
 
