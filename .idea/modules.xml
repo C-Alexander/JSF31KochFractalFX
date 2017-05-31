@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JSF31KochFractalFX - startup.iml" filepath="$PROJECT_DIR$/JSF31KochFractalFX - startup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KochCalc/KochCalc.iml" filepath="$PROJECT_DIR$/KochCalc/KochCalc.iml" />
     </modules>
   </component>
 </project>
